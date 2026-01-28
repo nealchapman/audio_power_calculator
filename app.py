@@ -211,7 +211,7 @@ if st.session_state.audio_left is not None:
             plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_input_l, use_container_width=True, key="input_wave_l")
+        st.plotly_chart(fig_input_l, width="stretch", key="input_wave_l")
     
     with col_wave_r:
         st.markdown("**Right Channel**")
@@ -234,7 +234,7 @@ if st.session_state.audio_left is not None:
             plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_input_r, use_container_width=True, key="input_wave_r")
+        st.plotly_chart(fig_input_r, width="stretch", key="input_wave_r")
     
     # -------------------------------------------------------------------------
     # Input Frequency Spectrum
@@ -271,7 +271,7 @@ if st.session_state.audio_left is not None:
             plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_l, use_container_width=True, key="input_spec_l")
+        st.plotly_chart(fig_spec_l, width="stretch", key="input_spec_l")
     
     with col_spec_r:
         st.markdown("**Right Channel**")
@@ -298,7 +298,7 @@ if st.session_state.audio_left is not None:
             plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_r, use_container_width=True, key="input_spec_r")
+        st.plotly_chart(fig_spec_r, width="stretch", key="input_spec_r")
     
     # -------------------------------------------------------------------------
     # Filter Controls
@@ -467,7 +467,7 @@ if st.session_state.audio_left is not None:
         yaxis=dict(range=[-60, 5]),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
     )
-    st.plotly_chart(fig_xover, use_container_width=True, key="xover_response")
+    st.plotly_chart(fig_xover, width="stretch", key="xover_response")
     
     # -------------------------------------------------------------------------
     # Crossover Band Waveforms
@@ -515,7 +515,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_low_l, use_container_width=True, key="low_wave_l")
+        st.plotly_chart(fig_low_l, width="stretch", key="low_wave_l")
         st.text(f"RMS: {dsp.calculate_rms(bands_left['low']):.4f}  |  Peak: {dsp.calculate_peak(bands_left['low']):.4f}")
         
         # Spectrum
@@ -534,7 +534,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_low_l, use_container_width=True, key="low_spec_l")
+        st.plotly_chart(fig_spec_low_l, width="stretch", key="low_spec_l")
     
     with col_mid_l:
         st.markdown("*Mid Band*")
@@ -551,7 +551,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_mid_l, use_container_width=True, key="mid_wave_l")
+        st.plotly_chart(fig_mid_l, width="stretch", key="mid_wave_l")
         st.text(f"RMS: {dsp.calculate_rms(bands_left['mid']):.4f}  |  Peak: {dsp.calculate_peak(bands_left['mid']):.4f}")
         
         # Spectrum
@@ -570,7 +570,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_mid_l, use_container_width=True, key="mid_spec_l")
+        st.plotly_chart(fig_spec_mid_l, width="stretch", key="mid_spec_l")
     
     with col_high_l:
         st.markdown("*High Band*")
@@ -587,7 +587,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_high_l, use_container_width=True, key="high_wave_l")
+        st.plotly_chart(fig_high_l, width="stretch", key="high_wave_l")
         st.text(f"RMS: {dsp.calculate_rms(bands_left['high']):.4f}  |  Peak: {dsp.calculate_peak(bands_left['high']):.4f}")
         
         # Spectrum
@@ -606,7 +606,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_high_l, use_container_width=True, key="high_spec_l")
+        st.plotly_chart(fig_spec_high_l, width="stretch", key="high_spec_l")
     
     # Right channel display
     st.markdown("**Right Channel**")
@@ -627,7 +627,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_low_r, use_container_width=True, key="low_wave_r")
+        st.plotly_chart(fig_low_r, width="stretch", key="low_wave_r")
         st.text(f"RMS: {dsp.calculate_rms(bands_right['low']):.4f}  |  Peak: {dsp.calculate_peak(bands_right['low']):.4f}")
         
         # Spectrum
@@ -646,7 +646,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_low_r, use_container_width=True, key="low_spec_r")
+        st.plotly_chart(fig_spec_low_r, width="stretch", key="low_spec_r")
     
     with col_mid_r:
         st.markdown("*Mid Band*")
@@ -663,7 +663,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_mid_r, use_container_width=True, key="mid_wave_r")
+        st.plotly_chart(fig_mid_r, width="stretch", key="mid_wave_r")
         st.text(f"RMS: {dsp.calculate_rms(bands_right['mid']):.4f}  |  Peak: {dsp.calculate_peak(bands_right['mid']):.4f}")
         
         # Spectrum
@@ -682,7 +682,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_mid_r, use_container_width=True, key="mid_spec_r")
+        st.plotly_chart(fig_spec_mid_r, width="stretch", key="mid_spec_r")
     
     with col_high_r:
         st.markdown("*High Band*")
@@ -699,7 +699,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_high_r, use_container_width=True, key="high_wave_r")
+        st.plotly_chart(fig_high_r, width="stretch", key="high_wave_r")
         st.text(f"RMS: {dsp.calculate_rms(bands_right['high']):.4f}  |  Peak: {dsp.calculate_peak(bands_right['high']):.4f}")
         
         # Spectrum
@@ -718,7 +718,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-80, 0])
         )
-        st.plotly_chart(fig_spec_high_r, use_container_width=True, key="high_spec_r")
+        st.plotly_chart(fig_spec_high_r, width="stretch", key="high_spec_r")
     
     # -------------------------------------------------------------------------
     # Crossover Check (sum of band outputs)
@@ -748,7 +748,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_sum_l, use_container_width=True, key="summed_wave_l")
+        st.plotly_chart(fig_sum_l, width="stretch", key="summed_wave_l")
         st.text(f"RMS: {dsp.calculate_rms(summed_left):.4f}  |  Peak: {dsp.calculate_peak(summed_left):.4f}")
     
     with col_check_r:
@@ -767,7 +767,7 @@ if st.session_state.audio_left is not None:
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0.3)',
             yaxis=dict(range=[-1, 1], autorange=False)
         )
-        st.plotly_chart(fig_sum_r, use_container_width=True, key="summed_wave_r")
+        st.plotly_chart(fig_sum_r, width="stretch", key="summed_wave_r")
         st.text(f"RMS: {dsp.calculate_rms(summed_right):.4f}  |  Peak: {dsp.calculate_peak(summed_right):.4f}")
     
     # -------------------------------------------------------------------------
@@ -859,7 +859,7 @@ if st.session_state.audio_left is not None:
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 showlegend=True
             )
-            st.plotly_chart(fig_imp_low, use_container_width=True, key="impedance_low")
+            st.plotly_chart(fig_imp_low, width="stretch", key="impedance_low")
     
     with col_trans2:
         st.markdown("*Mid Band*")
@@ -912,7 +912,7 @@ if st.session_state.audio_left is not None:
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 showlegend=True
             )
-            st.plotly_chart(fig_imp_mid, use_container_width=True, key="impedance_mid")
+            st.plotly_chart(fig_imp_mid, width="stretch", key="impedance_mid")
     
     with col_trans3:
         st.markdown("*High Band*")
@@ -965,7 +965,7 @@ if st.session_state.audio_left is not None:
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 showlegend=True
             )
-            st.plotly_chart(fig_imp_high, use_container_width=True, key="impedance_high")
+            st.plotly_chart(fig_imp_high, width="stretch", key="impedance_high")
     
     # -------------------------------------------------------------------------
     # Acoustics - Thiele/Small Parameters
@@ -1213,7 +1213,7 @@ if st.session_state.audio_left is not None:
                 yaxis=dict(range=[-25, 25]),
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
             )
-            st.plotly_chart(fig_eq, use_container_width=True, key="eq_response")
+            st.plotly_chart(fig_eq, width="stretch", key="eq_response")
     
     # -------------------------------------------------------------------------
     # Audio Power Analysis
@@ -1487,7 +1487,7 @@ if st.session_state.audio_left is not None:
             yaxis=dict(range=[40, 120]),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
-        st.plotly_chart(fig_spl, use_container_width=True, key="spl_response")
+        st.plotly_chart(fig_spl, width="stretch", key="spl_response")
     
     except NameError:
         # T/S parameters or EQ settings not available (no impedance data loaded)
@@ -1609,7 +1609,7 @@ if st.session_state.audio_left is not None:
         showlegend=True,
         legend=dict(orientation="h", yanchor="bottom", y=-0.1, xanchor="center", x=0.5)
     )
-    st.plotly_chart(fig_pie, use_container_width=True, key="energy_pie")
+    st.plotly_chart(fig_pie, width="stretch", key="energy_pie")
     
     # -------------------------------------------------------------------------
     # Download Processed Audio
