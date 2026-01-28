@@ -80,10 +80,18 @@ if 'impedance_high' not in st.session_state:
 uploaded_file = st.file_uploader(
     "Choose an audio file",
     type=['wav', 'aif', 'aiff', 'flac', 'ogg', 'mp3'],
-    help="Supported formats: WAV, AIF, AIFF, FLAC, OGG, MP3"
+    help="Supported formats: WAV, AIF, AIFF, FLAC, OGG, MP3. Files longer than 60 seconds will be truncated."
 )
 
+# Maximum duration in seconds (to prevent memory issues on cloud)
+MAX_DURATION_SECONDS = 60
+
 if uploaded_file is not None:
+    # Check file size first (warn if very large)
+    file_size_mb = len(uploaded_file.getvalue()) / (1024 * 1024)
+    if file_size_mb > 50:
+        st.warning(f"Large file detected ({file_size_mb:.1f} MB). Audio will be truncated to {MAX_DURATION_SECONDS} seconds to prevent memory issues.")
+    
     # Load audio file
     with tempfile.NamedTemporaryFile(delete=False, suffix=os.path.splitext(uploaded_file.name)[1]) as tmp:
         tmp.write(uploaded_file.getvalue())
@@ -101,6 +109,14 @@ if uploaded_file is not None:
             # Stereo: separate channels
             audio_left = audio_data[:, 0]
             audio_right = audio_data[:, 1]
+        
+        # Truncate to maximum duration to prevent memory issues
+        max_samples = int(MAX_DURATION_SECONDS * sample_rate)
+        original_duration = len(audio_left) / sample_rate
+        if len(audio_left) > max_samples:
+            audio_left = audio_left[:max_samples]
+            audio_right = audio_right[:max_samples]
+            st.info(f"Audio truncated from {original_duration:.1f}s to {MAX_DURATION_SECONDS}s for analysis.")
         
         # Truncate to start and end near zero crossings
         audio_left = dsp.truncate_to_zero_crossings(audio_left)
