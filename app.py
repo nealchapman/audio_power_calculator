@@ -84,7 +84,7 @@ uploaded_file = st.file_uploader(
 )
 
 # Maximum duration in seconds (to prevent memory issues on cloud)
-MAX_DURATION_SECONDS = 60
+MAX_DURATION_SECONDS = 120
 
 if uploaded_file is not None:
     # Check file size first (warn if very large)
