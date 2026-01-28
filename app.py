@@ -978,6 +978,13 @@ if st.session_state.audio_left is not None:
     has_imp_mid = st.session_state.impedance_mid is not None
     has_imp_high = st.session_state.impedance_high is not None
     
+    # Initialize eq_settings with defaults (will be overwritten if impedance data exists)
+    eq_settings = {
+        'Low': [{'freq': 100, 'q': 1.0, 'gain': 0}, {'freq': 200, 'q': 1.0, 'gain': 0}, {'freq': 300, 'q': 1.0, 'gain': 0}],
+        'Mid': [{'freq': 500, 'q': 1.0, 'gain': 0}, {'freq': 1000, 'q': 1.0, 'gain': 0}, {'freq': 2000, 'q': 1.0, 'gain': 0}],
+        'High': [{'freq': 5000, 'q': 1.0, 'gain': 0}, {'freq': 10000, 'q': 1.0, 'gain': 0}, {'freq': 15000, 'q': 1.0, 'gain': 0}]
+    }
+    
     if not (has_imp_low or has_imp_mid or has_imp_high):
         st.info("Load impedance data for at least one band to calculate Thiele/Small parameters.")
     else:
